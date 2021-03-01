@@ -1,12 +1,18 @@
-exports.addNumbers=(a:number,b:number):number=>{
+const addNumbers=(a:number,b:number):number=>{
     return a + b;
 };
-exports.subractNumbers=(a:number,b:number):number=>{
+const subractNumbers=(a:number,b:number):number=>{
     return a - b;
 };
-exports.multiplyNumbes = (a: number, b: number) => {
+const multiplyNumbes = (a: number, b: number) => {
     return a * b;
 };
-exports.divideNumbes = (a: number, b: number) => {
+const divideNumbes = (a: number, b: number) => {
     return a / b;
 };
+module.exports = {
+    addNumbers,
+    subractNumbers,
+    multiplyNumbes,
+    divideNumbes
+}
