@@ -1,6 +1,6 @@
-const http = require("http");
-const math2 = require("./modules/Math2")
-http.createServer((req, res)=> {
-    res.writeHead(200, {'Content-Type': 'text/html'});
-    res.end('Hello World! '+math2.multiplyNumbes(10,20));
-  }).listen(8080);
+import * as http from 'http'
+
+http.createServer((request, response) => {
+  response.writeHead(200, { "Content-Type": "text/html" })
+  .end("hello World 123");
+}).listen(8080);
