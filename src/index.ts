@@ -15,4 +15,7 @@ const app = express()
 app.use(helmet())
 app.use(cors())
 app.use(express.json())
-//Server processing 
+//Server tasks 
+app.listen(PORT,()=>{
+    console.log(`Listening on port ${PORT}`)
+})
