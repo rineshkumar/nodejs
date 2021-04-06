@@ -2,7 +2,7 @@
 import { BaseItem, Item } from './item.interface'
 import { Items } from "./items.interface"
 // In memory store 
-let item: Items = {
+let items: Items = {
     1: {
         id: 1,
         name: "Name1",
@@ -27,3 +27,25 @@ let item: Items = {
 
 };
 //Service interface
+const findAll = async (): Promise<Item[]> => { return Object.values(items) }
+const find = async (id: number): Promise<Item> => { return items[id] }
+const createItem = async (newItem: BaseItem): Promise<Item> => {
+    const id = new Date().valueOf();
+    items[id] = { ...newItem, id };
+    return items[id];
+}
+
+const updateItem = async (id: number, itemToBeUpdated: BaseItem): Promise<Item | null> => {
+    const item = await find(id);
+    if (!item)
+        return null;
+    items[id] = { id, ...itemToBeUpdated }
+    return items[id];
+}
+
+const removeItem = async (id: number): Promise<null | void> => {
+    const item = await find(id);
+    if (!item)
+        return null;
+    delete items[id];
+}
