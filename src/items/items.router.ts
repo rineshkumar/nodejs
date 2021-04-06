@@ -72,7 +72,15 @@ router.put("/:id", async (request: Request, response: Response) => {
 
 })
 //Delete item /items/:id
-
+router.delete("/:id", async (request: Request, response: Response) => {
+    try {
+        const id: number = parseInt(request.params.id, 10);
+        await itemService.deleteItem(id);
+        response.send(204);
+    } catch (error) {
+        response.status(500).send(error.message)
+    }
+})
 
 
 
