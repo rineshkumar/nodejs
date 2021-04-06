@@ -31,7 +31,7 @@ const findAll = async (): Promise<Item[]> => { return Object.values(items) }
 const find = async (id: number): Promise<Item> => { return items[id] }
 const createItem = async (newItem: BaseItem): Promise<Item> => {
     const id = new Date().valueOf();
-    items[id] = { ...newItem, id };
+    items[id] = { id, ...newItem };
     return items[id];
 }
 
