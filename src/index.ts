@@ -3,6 +3,7 @@ import * as dotenv from 'dotenv'
 import express from 'express'
 import cors from 'cors'
 import helmet from 'helmet'
+import { ESRCH } from 'node:constants';
 dotenv.config();
 //environment variables. 
 if (!process.env.PORT) {
@@ -16,6 +17,7 @@ app.use(helmet())
 app.use(cors())
 app.use(express.json())
 //Server tasks 
-app.listen(PORT,()=>{
-    console.log(`Listening on port ${PORT}`)
-})
+app.listen(PORT, () => {
+    console.log(`Listening on port ${PORT}`);
+  });
+
