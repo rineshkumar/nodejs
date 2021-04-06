@@ -43,9 +43,11 @@ const updateItem = async (id: number, itemToBeUpdated: BaseItem): Promise<Item |
     return items[id];
 }
 
-const removeItem = async (id: number): Promise<null | void> => {
+const deleteItem = async (id: number): Promise<null | void> => {
     const item = await find(id);
     if (!item)
         return null;
     delete items[id];
 }
+
+export { createItem, find, findAll, updateItem, deleteItem }
