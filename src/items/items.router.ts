@@ -51,7 +51,26 @@ router.post("/", async (req: Request, res: Response) => {
     }
 })
 //PUT item /items/:id
+router.put("/:id", async (request: Request, response: Response) => {
+    try {
+        const id: number = parseInt(request.params.id, 10);
+        const item: BaseItem = request.body;
+        //Check if item is there, and then create or update item 
+        const existingItem = await itemService.find(id);
+        if (existingItem) {
+            const updatedItem = await itemService.updateItem(id, item);
+            response.status(200).json(updatedItem)
 
+        } else {
+            const newItem = await itemService.createItem(item);
+            response.status(201).json(newItem);
+        }
+    } catch (error) {
+        response.status(500).send(error.message);
+    }
+
+
+})
 //Delete item /items/:id
 
 
