@@ -11,6 +11,7 @@ import express, { Request, Response } from 'express'
 import * as itemService from './items.service'
 import { BaseItem, Item } from './item.interface'
 import { Items } from './items.interface'
+
 //Router definitions
 const router = express.Router();
 //Controller definitions 
@@ -40,12 +41,22 @@ router.get("/", async (req: Request, res: Response) => {
 
 })
 //POST Item /items
+router.post("/", async (req: Request, res: Response) => {
+    try {
+        const newItem: BaseItem = req.body;
+        const itemCreated = await itemService.createItem(newItem)
+        res.status(201).json(itemCreated)
+    } catch (error) {
+        res.status(500).send(error.message)
+    }
+})
 //PUT item /items/:id
+
 //Delete item /items/:id
 
 
 
 
-export {router}
+export { router }
 
 
